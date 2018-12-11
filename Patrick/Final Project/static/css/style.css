@@ -1,3 +1,17 @@
+.description{
+  height:300px;
+  width:500px;
+  overflow: auto;
+  white-space:pre-wrap;
+  /* background-color:white; */
+  font-weight:bold;
+}
+td{
+  text-align:center;
+}
+
+
+
 * {
   box-sizing: border-box;
   font-family: Ubuntu, sans-serif;

@@ -1,14 +1,23 @@
+
 // from data.js
 var tbody = d3.select("tbody");
 var filteredData = 0;
 var score = 0;
-var ufodtls = data
-console.log(data);
-data.forEach((UFOReport) => {
+var ufodtls = citiesdata;
+citiesdata.forEach((UFOReport) => {
     var row = tbody.append("tr");
     Object.entries(UFOReport).forEach(([key, value]) => {
-      var cell = tbody.append("td");
+      // console.log(key);
+      if(key=="description"){
+        var cell = tbody.append("pre");
+        cell.attr("class","description");
+        cell.text(value);
+      }else if(key=="city"){
+
+      }else{
+      var cell = tbody.append("td");     
       cell.text(value);
+      }
     });
   });
 
@@ -21,15 +30,15 @@ submit.on("click", function() {
   d3.event.preventDefault();
 
   // Select the input element and get the raw HTML node
-  var inputElement = d3.select("#Zip");
+  var inputElement = d3.select("#citysearch");
 
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
 
   console.log(inputValue);
-  console.log(data);
-  var filteredData = ufodtls.filter(ufo => ufo.Zip === inputValue);
-  console.log(filteredData);
+
+  var filteredData = ufodtls.filter(ufo => ufo.city === inputValue);
+  console.log("gg");
   buildTable(filteredData);
   rate(filteredData);
   //var tbody = d3.select("filteredData");
@@ -38,21 +47,28 @@ submit.on("click", function() {
 
 function buildTable(filteredData){ 
 //var table = d3.select("filteredData");
-  console.log("raj", filteredData);
+
   //var tbody = table.select("tbody");
   tbody.html("");
   filteredData.forEach((UFOReport) => {
     var row = tbody.append("tr");
     Object.entries(UFOReport).forEach(([key, value]) => {
-      var cell = tbody.append("td");
+      if(key=="description"){
+        var cell = tbody.append("div");
+        // cell.style="d";
+        cell.attr("class","description");
+        cell.text(value);
+      }else{
+      var cell = tbody.append("td");     
       cell.text(value);
+      }
     });
   });
 }
 
 
 function rate(filteredData){ 
-  console.log("raj", filteredData);
+  console.log("g3");
       tbody.html("");
       filteredData.forEach((UFOReport) => {
         var temp_catgry  = "" 
@@ -60,20 +76,18 @@ function rate(filteredData){
         scorezip(temp_catgry);             
         var row = tbody.append("tr");
         Object.entries(UFOReport).forEach(([key, value]) => {                 
-          var cell = tbody.append("td");
+          if(key=="description"){
+            var cell = tbody.append("div");
+            // cell.style="d";
+            cell.attr("class","description");
+            cell.text(value);
+          }else{
+          var cell = tbody.append("td");     
           cell.text(value);
+          }
         });
       });
-      if (score < 10){
-        result = "Low";
-      }
-        else if (score < 30) {
-        result = "Medium";
-      } else {
-       result = "High";
-      } 
-      document.getElementById("Rate").innerHTML = result;
-      score = 0;
+
 }
 
 function scorezip(temp_catgry){

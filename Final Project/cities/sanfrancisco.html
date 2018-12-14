@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<!--     -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="citytemp.js"></script>
+
+  <!-- Bring in our bootstrap stylesheet -->
+  <meta charset="utf-8">
+  <title>San Francisco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylecitytemplate.css">
+
+</head>
+<!-- <div style="width:30%">
+<div class='tableauPlaceholder' id='viz1544063065897' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;TG&#47;TGNNP5B9C&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;TGNNP5B9C' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;TG&#47;TGNNP5B9C&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1544063065897');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+</div> -->
+<body onload="cityinfo(2)">
+ 
+    <a href="#"><img class="arrowtop" src="../citytempimg/arrow.png"></a>
+
+    <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
+        <a href="../index.html" ><img src="../static/images/united_states_tech_cities.jpg" style="width:200px"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-item">
+                    <a href="../index.html" class="nav-link active">Home</a>
+                </li>
+
+                <li class="navbar-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cities</a>
+                     <div class="dropdown-menu">
+                        <a href="austin.html" class="dropdown-item">Austin</a>
+                        <a href="newyork.html" class="dropdown-item">New York</a>
+                        <a href="sanfrancisco.html" class="dropdown-item">San Francisco</a>
+                        
+                    </div>
+                </li>
+                <li class="navbar-item">
+                    <a href="visualizations.html" class="nav-link">Visualizations</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="job.html" class="nav-link">Jobs</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="nav-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  
+    <br>
+    <br>
+<!-- back ground imgs for scrolling-->
+<div class="imgbox">
+    <img class="citybackground" id="citybackgroundimg" src="" style="height:1700px;">
+    <img class="citybackground" src="../citytempimg/weather.jpg" style="height:1000px;">
+    <img class="citybackground" src="../citytempimg/crime.jpg" style="height:1000px;" >
+    <img class="citybackground" src="../citytempimg/housing.jpg" >
+
+
+    
+</div>
+  
+
+  <!-- Creates the Overall Grid -->
+
+<div class="likebody">
+
+ <!-- <img class="cityweatherback" src="../citytempimg/austin.jpg">
+ <img class="cityweatherback" src="../citytempimg/austin.jpg"> -->
+  <div class="container">
+      <br>
+  <h1 id="cityname" class="citytitle" style="    text-shadow: 3px 3px 0 white,-3px -3px 0 white,3px -3px 0 white,-3px  3px 0 white,3px  3px 0 white;"></h1>
+    <!--Seventh Row-->
+    <div class="row">
+<!--Weather Column in First Row-->
+<div class="col-md-3" style="padding-right:0;"id="showpop">
+        <div class="boximgs">
+                <p class="cityimg_text" style="position: absolute;top:30%;left:20%;font-size:40px;">Weather</p>
+            <div class="centerbox">
+                    <!-- <div class="cityimg_text" style="font-size:30px;margin:0;" >Tempurature</div> -->
+            </div>
+            <div class="imgbackground">
+                <a href="#jumpweather"><img class="citypageimg" src="../citytempimg/weather.jpg" ></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" style="border:1px solid;border-left:none;" id="hidepop" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="cityimg_text " style="font-size:25px;" >Current Temp:</div>
+                <div class="cityimg_text "id="currenttemp" style="font-size:45px;" ></div>
+            </div>
+            <div class="col-md-6">
+                <div class="cityimg_text" style="color:rgb(248, 55, 55);font-size:25px;">Max:</div>
+                <div class="cityimg_text"id="maxtemp" style="color:rgb(248, 55, 55);font-size:35px;"></div>
+                <div class="cityimg_text"  style="color:green;font-size:25px;">Min:</div>
+                <div class="cityimg_text" id="mintemp" style="color:green;font-size:35px;"></div>
+            </div>
+        </div>
+    </div>
+      <!--HOusing Column in First Row-->
+      <div class="col-md-3" style="padding-right:0;" id="showpop">
+        <div class="boximgs">
+                <p class="cityimg_text" style="position: absolute;top:30%;left:16%;font-size:40px;">Population</p>
+            <div class="centerbox">
+                <!-- <p class="cityimg_text" id="citypopulation" style="padding:0;color:black;"></p> -->
+            </div>
+            <div class="imgbackground">
+                <img class="citypageimg" src="../citytempimg/population.jpg">
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="border:1px solid;border-left:none;" id="hidepop" >
+        <p class="cityimg_text" style="font-size:30px;margin:0;color:gray" >Population:</p>
+        <p class="cityimg_text" id="citypopulation" style="font-size:35px;" ></p>
+        <p class="cityimg_text"style="font-size:30px;margin:0;color:gray" >Median Age:</p>
+        <p class="cityimg_text" id="medianage"style="font-size:35px;" ></p>
+
+    </div>
+          <!--Population Column in First Row-->
+    <div class="col-md-3" style="padding-right:0;" id="showpop">
+            <div class="boximgs">
+                <div class="centerbox">
+                    <p class="cityimg_text" style="position: absolute;top:60px;left:10%;font-size:60px;color:black">Housing</p>
+                    <!-- <p class="cityimg_text" style="font-size:30px;">Average: $1500</p> -->
+                </div>
+                <div  class="imgbackground">
+                    <a href="#jumphousing"><img class="citypageimg" src="../citytempimg/housing2.jpg"></a>                </div>
+            </div>
+        </div>
+        <div class="col-md-9" style="border:1px solid;border-left:none;" id="hidepop" >
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="cityimg_text" style="font-size:25px;margin:0;color:gray;float:left">Home Ownership:</p>
+                    <p class="cityimg_text" id="homeowner" style="font-size:30px;float:left;"></p>
+                    <p class="cityimg_text" style="font-size:25px;margin:0;color:gray;float:left">Renter:</p>
+                    <p class="cityimg_text" id="renter" style="font-size:30px;float:left"></p>
+                    <p class="cityimg_text" style="font-size:25px;margin:0;color:gray;float:left">Median Home Price as of 10/18:</p>
+                    <p class="cityimg_text" id="renter" style="font-size:30px;float:left">1295000</p>
+                </div>
+                <div class="col-md-6">
+                        <p class="cityimg_text" style="font-size:25px;margin:0;color:gray;float:left">1 Bedroom price as of 10/18:</p>
+                        <p class="cityimg_text" id="homeowner" style="font-size:30px;float:left;">3495</p>
+                        <p class="cityimg_text" style="font-size:25px;margin:0;color:gray;float:left">2 Bedroom price as of 10/18:</p>
+                        <p class="cityimg_text" id="renter" style="font-size:30px;float:left">4650</p>
+
+                </div>
+                
+            </div>    
+
+            </div>
+        
+        <!--4 Column in First Row-->
+         <div class="col-md-4" style="padding-right:0;"id="showpop">
+                <div class="boximgs">
+                    <div class="centerbox">
+                            <div class="cityimg_text" style="position: absolute;top:60px;left:10%;font-size:40px;padding:0;">Transportation</div>
+
+                        <!-- <p class="cityimg_text"></p> -->
+                        <!-- <p class="cityimg_text">Transportation</p> -->
+                    </div>
+                    <div class="imgbackground">
+                        <img class="citypageimg" src="../citytempimg/transport.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" style="border:1px solid;border-left:none;padding:0;" id="hidepop">
+                    <p class="cityimg_text" style="font-size:20px;margin:0;margin-left:2%; text-align: left">
+                            <br>SFMTA provides public transportation via Bus, Rail (Muni), 
+                            <br>Ride Share and Shared Bike services exist. 
+                            <br>The airport is located about 13 miles from downtown.
+                            <br><br>Important Links:
+                            <br>SFMTA: <a target="_blank" href="https://www.sfmta.com">Click Here</a>
+
+                    </p>
+                    
+    
+                </div>
+                <!--job Column in First Row-->
+         <div class="col-md-3" style="padding-right:0;"id="showpop">
+                <div class="boximgs">
+                    <div class="centerbox">
+                            <!-- <div class="cityimg_text" style="position: absolute;top:60px;left:10%;font-size:40px;padding:0;">Transportation</div> -->
+
+                        <!-- <p class="cityimg_text"></p> -->
+                        <!-- <p class="cityimg_text">Transportation</p> -->
+                    </div>
+                    <div class="imgbackground">
+                        <img class="citypageimg" src="../citytempimg/job.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="border:1px solid;border-left:none;padding:0;border-radius:0;border-right:white" id="hidepop">
+                    <p class="cityimg_text" style="font-size:20px;margin:0;color:gray">Median House Hold Income:</p>
+                    <p class="cityimg_text" id="medianhouseincome" style="font-size:25px;"></p>
+                    <p class="cityimg_text"  style="font-size:20px;margin:0;color:gray">Mean House Hold Income:</p>
+                    <p class="cityimg_text" id="meanHouseIncome" style="font-size:25px;"></p>
+                    <p class="cityimg_text" style="font-size:20px;margin:0;color:gray">Unemplyment Rate:</p>
+                    <p class="cityimg_text" id="unemplymemt" style="font-size:25px;"></p>
+            </div>
+            <div class="col-md-3" style="border:1px solid;border-left:none;padding:0;" id="hidepop">
+                <p class="cityimg_text" style="font-size:30px;margin:0;color:gray">Major Employers:</p>   
+                <div class="cityimg_text" id="majoremploy" style="font-size:20px;margin:0;overflow: auto;height:200px;"></div>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <!-- Crime data -->
+            <div class="col-md-3" style="padding-right:0;"id="showpop">
+                <div class="boximgs">
+                    <div class="centerbox">
+                            <!-- <div class="cityimg_text" style="position: absolute;top:60px;left:10%;font-size:40px;padding:0;">Transportation</div> -->
+
+                        <!-- <p class="cityimg_text"></p> -->
+                        <!-- <p class="cityimg_text">Transportation</p> -->
+                    </div>
+                    <div class="imgbackground">
+                        <a href="#jumpcrime"><img class="citypageimg" src="../citytempimg/crime.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="border:1px solid;border-left:none;height:250px;padding:0;" id="hidepop">
+                <p class="cityimg_text" style="font-size:25px;margin:0;">Theft:</p>
+                <p class="cityimg_text" id="unemplymemt" style="font-size:20px;">3718</p>  
+                <p class="cityimg_text" style="font-size:25px;margin:0;">Theft Robbery:</p>
+                <p class="cityimg_text" id="unemplymemt" style="font-size:20px;">13960</p>  
+                <p class="cityimg_text" style="font-size:25px;margin:0;">Burglary:</p>
+                <p class="cityimg_text" id="unemplymemt" style="font-size:20px;">11992</p>  
+                <div class="cityimg_text" id="majoremploy" style="font-size:20px;margin:0;overflow: auto;height:200px;"></div>
+            </div>
+    </div>
+    <!-- link to jump from top to weather -->
+    <a id="jumpweather"></a>
+<br>
+
+
+
+    <!--Eighth Row for weather data-->
+    <div class="row">
+      <div class="col-md-12" >  
+        <p class="citytitle" id="aroundtext"style="text-align: center;">Weather Data</p>    
+        <!-- <img src="../citytempimg/San Francisco Temperture.jpg" style="width:100%">  -->
+        <div class='tableauPlaceholder' id='viz1544761787115' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FinalProject_675&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FinalProject_675&#47;Dashboard3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FinalProject_675&#47;Dashboard3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1544761787115');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    </div>
+    </div>
+
+<br>
+<br>
+<br>
+<!-- jump from top to crime page  -->
+<a id="jumpcrime"></a>
+<br>
+<br>
+<!-- crime page -->
+
+
+    <div class="row" >
+            <div class="col-md-12">  
+              <p class="citytitle" id="aroundtext"style="text-align: center;">Crime Data</p>    
+              <img src="../citytempimg/SFO crime.jpg" style="width:100%"> 
+            </div>
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br><a id="jumphousing"></a>
+          <br>
+          <br>
+          
+          
+               <div class="row" >
+                      <div class="col-md-12">  
+                        <p class="citytitle" id="aroundtext"style="text-align: center;">Housing Data</p>    
+                        <img src="../citytempimg/San Francisco Median Home.png" style="width:100%"> 
+                        <img src="../citytempimg/San Francisco Monthly Rental .png" style="width:100%"> 
+          
+                      </div>
+              </div>
+
+    
+
+  </div>
+
+</div><!-- end like body-->
+
+<!-- <div class="likebody">
+<p style="text-align: center">Weather Data</p>
+<img class="cityweatherback" src="../citytempimg/weather.jpg">
+<div class="container">
+    <h1 id="cityname" class="citytitle"></h1>
+      <div class="row">
+
+      </div>
+
+    </div>
+</div> -->
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

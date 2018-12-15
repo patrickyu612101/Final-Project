@@ -1,0 +1,28 @@
+﻿City,Population,MedianAge,MedianHouseHoldIncome,MeanHouseHoldIncome,UnemplymentRate,HomeOwnership,Renters,MajorEmployers,Weather,,,,,,
+Austin,950715,32.4,"60,939","$86,500 ",2.60%,45.30%,54.70%,"City of Austin<br>
+Dell Inc<br>
+IBM Corp<br>
+Seaton Family Hospitals<br>
+State of Texas<br>
+Amazon<br>
+Apple<br>",Obtain Current Weather,,,,,,
+New York,8622698,35.9,"$55,191 ","$88,437 ",4.30%,32.00%,68.00%,"J.P Morgan Chase<br>
+Citi<br>
+ABM Industries
+<br>Pfizer<br>
+Carl Icahn<br>
+Philip Morris<br>
+Omnicom group<br>
+PwC<br>
+",Obtain Current Weather,,,,,,
+San Francisco,884363,38.4,"$87,701 ","$127,625 ",2.10%,36.80%,63.20%,"Salesforce<br>
+Uber<br>
+Wells fargo<br>
+California Pacific Medical Center<br>
+Kaiser Permanente<br>
+",Obtain Current Weather ,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,

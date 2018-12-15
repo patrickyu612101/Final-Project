@@ -13,6 +13,20 @@
     margin:0;
     /* height:50vw */
 }
+
+#weathertooltip{
+    font-size: 20px;
+    text-align: center;
+    padding:10%;
+    width:150%;
+    border:1px solid;
+    border-radius: 10px;
+    background-color: white;
+    display:none;
+}
+#currentweather:hover +#weathertooltip{
+display:block
+}
 .citybackground{
     /* position: absolute;
     left:0;

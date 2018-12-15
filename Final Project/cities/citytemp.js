@@ -53,11 +53,15 @@ function cityinfo(citycode){
       var currenttemp=data.main.temp;
       var maxtemp=data.main.temp_max;
       var mintemp=data.main.temp_min;
+      var weather=data.weather[0].main;
+      var weatherdesc=data.weather[0].description;
+      console.log(weatherdesc);
       
       document.getElementById("currenttemp").innerHTML=currenttemp;
       document.getElementById("maxtemp").innerHTML=maxtemp;
       document.getElementById("mintemp").innerHTML=mintemp;
-      
+      document.getElementById("currentweather").innerHTML=weather;
+      document.getElementById("weathertooltip").innerHTML=weatherdesc;
       
       
       }
